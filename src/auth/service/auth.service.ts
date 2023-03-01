@@ -6,8 +6,8 @@ export class AuthService {
 
   async validateUser(username: string, pass: string): Promise<any> {
     const user = {
-        password: 'password',
-        username: 'username',
+        password: 'ulan',
+        username: 'ulan',
         id: 1
     }
 
