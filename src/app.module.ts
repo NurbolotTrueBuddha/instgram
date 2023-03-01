@@ -9,6 +9,9 @@ import { User } from './auth/entity/user.entity';
 import { Post } from './post/entity/post.entity';
 import { PostLike } from './post/entity/post-like.entity';
 import { Comment } from './post/entity/comment.entity';
+import { Subscribers } from './user/entity/subscriber.entity';
+import { CommentLike } from './post/entity/comment-like.entity';
+import { Message } from './message/entity/message.entity';
 
 @Module({
   imports: [
@@ -19,7 +22,7 @@ import { Comment } from './post/entity/comment.entity';
       username: 'postgres',
       password: 'keiz',
       database: 'instagram',
-      entities: [UserProfile, User, Post, PostLike, Comment],
+      entities: [UserProfile, User, Post, PostLike, Comment, Subscribers, CommentLike, Message],
       synchronize: true,
       logging: true
     }),
