@@ -10,6 +10,9 @@ export class User {
     username: string;
 
     @Column()
+    email: string;
+
+    @Column()
     user_password: string;
 
     @OneToOne(() => UserProfile)
