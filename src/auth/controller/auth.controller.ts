@@ -1,11 +1,10 @@
-import { Controller, Request, Body, Post, UseGuards } from '@nestjs/common';
-import { AuthGuard } from '@nestjs/passport';
-import { ApiTags, ApiResponse } from '@nestjs/swagger';
+import { Controller, Request, Body, Post, UseGuards, Get } from '@nestjs/common';
+import { ApiTags, ApiResponse, ApiBearerAuth } from '@nestjs/swagger';
 import { LoginDto } from '../utils/dto/login.dto';
 import { LocalAuthGuard } from '../strategy/local-auth.guard';
 import { AuthService } from '../service/auth.service';
 import { AccessTokenDto } from '../utils/dto/access-token.dto';
-
+import { JwtAuthGuard } from '../strategy/jwt-auth.guard';
 
 @ApiTags('Auth')
 @Controller()
@@ -22,5 +21,10 @@ export class AuthController {
     return this.authService.login(req.user) // {access_token}
   }
   
-
+  @ApiBearerAuth()
+  @UseGuards(JwtAuthGuard)
+  @Get('auth/hello')
+  hello() {
+    return 'hello world';
+  }
 }
